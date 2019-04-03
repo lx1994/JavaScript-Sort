@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript冒泡排序+快速排序+sort排序</title>
+</head>
+<body>
+	<script>
+	//冒泡排序 
+	function bubblesort(arr)
+	{
+		for(var i=0,len=arr.length;i<len;i++)
+		{
+			for(var j=0;j<len-1-i;j++)
+			{
+				if(arr[j]>arr[j+1])
+				{
+					var t;
+					t=arr[j];
+					arr[j]=arr[j+1];
+					arr[j+1]=t;
+				}
+			}
+		}
+		return arr;
+	}
+	var arrtest=[8,5,19,10,2,7,4];
+	console.log(bubblesort(arrtest));
+
+	//快排  
+	function quicksort(arr)
+	{
+		if(arr.length<=1)
+		{
+			return arr;
+		}
+		var baseindex=Math.round(arr.length/2);
+		var basevalue=arr.splice(baseindex,1);
+		var left=[];
+		var right=[];
+		for(var i=0,len=arr.length;i<len;i++)
+		{
+			if(arr[i]<basevalue)
+			{
+				left.push(arr[i]);
+				continue;
+			}
+			right.push(arr[i]);
+		}
+		return quicksort(left).concat(basevalue,quicksort(right));
+	}
+
+	var arrtest2=[10,8,16,6,4,1,9];
+	console.log(quicksort(arrtest2));
+	</script>
+</body>
+</html>
